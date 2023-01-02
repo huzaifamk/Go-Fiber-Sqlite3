@@ -11,3 +11,6 @@ build-macos:
 
 build-windows:
 	GOOS=windows GOARCH=amd64 go build -o ./bin/gofiber-app.exe ./cmd/main.go
+
+run-build:
+	./bin/gofiber-app
