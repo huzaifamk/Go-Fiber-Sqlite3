@@ -17,7 +17,7 @@ func GetUsers(c *fiber.Ctx) error {
 }
 
 func GetUser(c *fiber.Ctx) error {
-	
+
 	id := c.Params("id")
 	db := database.DBConn
 	var user models.User
@@ -26,29 +26,36 @@ func GetUser(c *fiber.Ctx) error {
 }
 
 func CreateUser(c *fiber.Ctx) error {
-	
+
 	db := database.DBConn
 	user := new(models.User)
 	if err := c.BodyParser(user); err != nil {
 		return err
 	}
 	db.Create(&user)
-	return c.JSON(user)
+
+	return c.JSON("User created successfully!")
 }
 
 func UpdateUser(c *fiber.Ctx) error {
 
+	id := c.Params("id")
 	db := database.DBConn
-	user := new(models.User)
-	if err := c.BodyParser(user); err != nil {
+	var user models.User
+	db.First(&user, id)
+	if user.Fname == "" {
+		return c.Status(500).SendString("User not found with ID")
+	}
+	if err := c.BodyParser(&user); err != nil {
 		return err
 	}
 	db.Save(&user)
-	return c.JSON(user)
+
+	return c.JSON("User updated successfully!")
 }
 
 func DeleteUser(c *fiber.Ctx) error {
-	
+
 	id := c.Params("id")
 	db := database.DBConn
 	var user models.User
@@ -57,5 +64,6 @@ func DeleteUser(c *fiber.Ctx) error {
 		return c.Status(500).SendString("User not found with ID")
 	}
 	db.Delete(&user)
-	return nil
+
+	return c.JSON("User deleted successfully!")
 }
