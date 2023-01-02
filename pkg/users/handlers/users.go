@@ -35,3 +35,27 @@ func CreateUser(c *fiber.Ctx) error {
 	db.Create(&user)
 	return c.JSON(user)
 }
+
+func UpdateUser(c *fiber.Ctx) error {
+
+	db := database.DBConn
+	user := new(models.User)
+	if err := c.BodyParser(user); err != nil {
+		return err
+	}
+	db.Save(&user)
+	return c.JSON(user)
+}
+
+func DeleteUser(c *fiber.Ctx) error {
+	
+	id := c.Params("id")
+	db := database.DBConn
+	var user models.User
+	db.First(&user, id)
+	if user.Fname == "" {
+		return c.Status(500).SendString("User not found with ID")
+	}
+	db.Delete(&user)
+	return nil
+}
