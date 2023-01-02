@@ -8,10 +8,10 @@ import (
 
 const (
 	GetUsersRoute   = "/api/v1/users"
-	GetUserRoute    = "/api/v1/users/:id"
-	CreateUserRoute = "/api/v1/users"
-	UpdateUserRoute = "/api/v1/users/:id"
-	DeleteUserRoute = "/api/v1/users/:id"
+	GetUserRoute    = "/api/v1/user/:id"
+	CreateUserRoute = "/api/v1/user"
+	UpdateUserRoute = "/api/v1/user/:id"
+	DeleteUserRoute = "/api/v1/user/:id"
 )
 
 func AddRoutes(s *fiber.App) {
