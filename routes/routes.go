@@ -6,6 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+// Set the routes for the server
 const (
 	GetUsersRoute   = "/api/v1/users"
 	GetUserRoute    = "/api/v1/user/:id"
@@ -14,6 +15,7 @@ const (
 	DeleteUserRoute = "/api/v1/user/:id"
 )
 
+// AddRoutes adds the routes to the server
 func AddRoutes(s *fiber.App) {
 	s.Get(GetUsersRoute, handlers.GetUsers)
 	s.Get(GetUserRoute, handlers.GetUser)
