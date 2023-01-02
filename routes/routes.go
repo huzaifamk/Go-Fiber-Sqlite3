@@ -9,9 +9,11 @@ import (
 const (
 	GetUsersRoute = "/api/v1/users"
 	GetUserRoute  = "/api/v1/users/:id"
+	CreateUserRoute = "/api/v1/users"
 )
 
 func AddRoutes(s *fiber.App) {
 	s.Get(GetUsersRoute, handlers.GetUsers)
 	s.Get(GetUserRoute, handlers.GetUser)
+	s.Post(CreateUserRoute, handlers.CreateUser)
 }

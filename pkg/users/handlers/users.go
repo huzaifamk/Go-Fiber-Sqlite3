@@ -24,3 +24,14 @@ func GetUser(c *fiber.Ctx) error {
 	db.Find(&user, id)
 	return c.JSON(user)
 }
+
+func CreateUser(c *fiber.Ctx) error {
+	
+	db := database.DBConn
+	user := new(models.User)
+	if err := c.BodyParser(user); err != nil {
+		return err
+	}
+	db.Create(&user)
+	return c.JSON(user)
+}
