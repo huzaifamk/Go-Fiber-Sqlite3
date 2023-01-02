@@ -3,6 +3,12 @@
 run:
 	go run ./cmd/main.go
 
+build:
+	go build -o ./bin/gofiber-app ./cmd/main.go
+
+run-build:
+	./bin/gofiber-app
+
 build-linux:
 	GOOS=linux GOARCH=amd64 go build -o ./bin/gofiber-app ./cmd/main.go
 
@@ -11,6 +17,3 @@ build-macos:
 
 build-windows:
 	GOOS=windows GOARCH=amd64 go build -o ./bin/gofiber-app.exe ./cmd/main.go
-
-run-build:
-	./bin/gofiber-app
