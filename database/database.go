@@ -8,3 +8,14 @@ import (
 var (
 	DBConn *gorm.DB
 )
+
+func IniDatabase() {
+
+	var err error
+	DBConn, err = gorm.Open("sqlite3", "./db/test.db")
+	if err != nil {
+		panic("failed to connect database")
+	}
+	return
+	
+}
