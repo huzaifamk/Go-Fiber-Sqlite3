@@ -8,8 +8,10 @@ import (
 
 const (
 	GetUsersRoute = "/api/v1/users"
+	GetUserRoute  = "/api/v1/users/:id"
 )
 
 func AddRoutes(s *fiber.App) {
 	s.Get(GetUsersRoute, handlers.GetUsers)
+	s.Get(GetUserRoute, handlers.GetUser)
 }

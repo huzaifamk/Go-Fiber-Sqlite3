@@ -15,3 +15,12 @@ func GetUsers(c *fiber.Ctx) error {
 	return c.JSON(users)
 
 }
+
+func GetUser(c *fiber.Ctx) error {
+	
+	id := c.Params("id")
+	db := database.DBConn
+	var user models.User
+	db.Find(&user, id)
+	return c.JSON(user)
+}
