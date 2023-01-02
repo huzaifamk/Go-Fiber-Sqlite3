@@ -7,3 +7,7 @@ type User struct {
 	Email     string `json:"email"`
 	Phone     string `json:"phone"`
 }
+
+func (b *User) TableName() string {
+	return "users"
+}
