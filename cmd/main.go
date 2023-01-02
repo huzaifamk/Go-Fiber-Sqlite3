@@ -32,7 +32,13 @@ func main() {
 
 	router.AddRoutes(server)
 
+	
 	server.Listen(":3000")
+
+	server.Use(func(c *fiber.Ctx) error {
+		fmt.Println(c.Path())
+		return c.Next()
+	})
 
 	defer database.DBConn.Close()
 }
