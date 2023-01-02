@@ -2,8 +2,8 @@ package models
 
 type User struct {
 	ID    int64
-	FName string
-	LName string
+	Fname string
+	Lname string
 	Email string
 	Phone int64
 }
