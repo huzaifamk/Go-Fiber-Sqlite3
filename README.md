@@ -10,3 +10,7 @@
 
 1. Open terminal in project root directory and run the command `go mod tidy` to install all the dependencies.
 2. After installation of dependencies, follow the `Makefile` guide to run the project.
+
+## Additionals
+
+1. In order to see the database in a GUI, install the SQLiteStudio using the link <https://sqlitestudio.pl/>
