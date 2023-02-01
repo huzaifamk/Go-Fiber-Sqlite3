@@ -11,7 +11,7 @@ import (
 func GetBTCPrice(c *fiber.Ctx) models.CoinMarketCapResponse {
 
 	// Extract headers from the incoming request
-	headers := c.Request().Header
+	headers := &c.Request().Header
 	// Initialize the API key name
 	keyName := models.API_KEY_NAME
 	// Get the API key value from the headers
