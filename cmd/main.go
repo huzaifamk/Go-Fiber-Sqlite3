@@ -1,10 +1,10 @@
 package main
 
 import (
-	db "go-fiber-crud/database"
-	router "go-fiber-crud/routes"
+	router "go-fiber-api/routes"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
@@ -12,16 +12,13 @@ func main() {
 
 	// Using Fiber as the web framework to start the server and handle the routes
 	server := fiber.New()
-
-	// Initialize the database connection
-	db.IniDatabase()
+	
+	// Use the logger to log the requests
+	server.Use(logger.New())
 
 	// Add the routes to the server
 	router.AddRoutes(server)
 
 	// Start the server on port 3000
 	server.Listen(":3000")
-
-	// Close the database connection when the server is stopped
-	defer db.DBConn.Close()
 }
